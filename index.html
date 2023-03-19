@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>reinforcement learning</title>
+
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+    기록은 최대 500판까지 기록됩니다
+    <div id="log"></div>
+    <div id="debug"></div>
+    <button onclick="reset();">초기화</button>
+    <button onclick="loop = false;">정지</button>
+    <button onclick="loop = true;">시작</button>
+    <br><br>
+    <div>속도</div>
+    <button onclick="speed = 1;">1gen/1t</button>
+    <button onclick="speed = 10;">1gen/10t</button>
+    <button onclick="speed = 100;">1gen/100t</button>
+    <button onclick="speed = 1000;">1gen/1000t</button>
+    
+    <script src="main.js"></script>
+</body>
+</html>
