@@ -13,26 +13,26 @@
         <div class="logName">가위바위보 기록</div>
         <div id="logs"></div>
     </div>
-    <div id="debug">
-        세대: 0<br>
-        [전체] | 승점: 0 | 승률: 0%<br>
-        [이전100판] | 승점: 0 | 승률: 0%
+    <div class="debug">
+        <div id="allGen">0</div>
+        <div class="all">
+            <div id="allStatBar"></div>
+            <div id="allStat"></div>
+        </div>
+        <div class="ao100Gen">100</div>
+        <div class="ao100">
+            <div id="ao100StatBar"></div>
+            <div id="ao100Stat"></div>
+        </div>
     </div>
-    <div class="test">
-        <div class="test1"></div>
-        <div class="test2"></div>
-        <div class="test3"></div>
-    </div>
-    <button onclick="reset();">초기화</button>
-    <button onclick="loop = false;">정지</button>
-    <button onclick="loop = true;">시작</button>
-    <br><br>
-    <div>속도</div>
-    <button onclick="speed = 1;">1gen/1t</button>
-    <button onclick="speed = 10;">1gen/10t</button>
-    <button onclick="speed = 100;">1gen/100t</button>
-    <button onclick="speed = 1000;">1gen/1000t</button>
+    <button class="basicBtn" id="reset" onclick="reset();"><ion-icon name="refresh"></ion-icon></button>
+    <button class="basicBtn" id="stop" onclick="setLoop(0);"><ion-icon name="stop"></ion-icon></button>
+    <button class="basicBtn" id="play" onclick="setLoop(1)"><ion-icon name="play"></ion-icon></button>
+    <button class="basicBtn" id="speedDown" onclick="setSpeed(0)"><ion-icon name="play-back"></ion-icon></button>
+    <button class="basicBtn" id="speedUp" onclick="setSpeed(1)"><ion-icon name="play-forward"></ion-icon></button>
     
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
     <script src="main.js"></script>
 </body>
 </html>

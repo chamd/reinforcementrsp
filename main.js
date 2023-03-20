@@ -11,6 +11,8 @@ var speed = 100;
 var tick = 0;
 
 function reset() {
+    document.getElementById('allStatBar').style.width = `0`;
+    document.getElementById('ao100StatBar').style.width = `0`;
     document.getElementById('logs').innerHTML = '';
     nowToken = [[basicToken, basicToken, basicToken], [basicToken, basicToken, basicToken], [basicToken, basicToken, basicToken]]
     logs = [];
@@ -18,6 +20,43 @@ function reset() {
     globalGen = 0;
     globalScore = 0;
     ao100Score = 0;
+}
+
+function setLoop(value) {
+    if (value == 1) {
+        document.getElementById('play').style.display = 'none';
+        document.getElementById('stop').style.display = 'block';
+        loop = true;
+    } else {
+        document.getElementById('play').style.display = 'block';
+        document.getElementById('stop').style.display = 'none';
+        loop = false;
+    }
+}
+
+function setSpeed(value) {
+
+    if (value == 1) {
+        if (speed == 1000) {
+            speed = 100;
+        } else if (speed == 100) {
+            speed = 10;
+        } else if (speed == 10) {
+            speed = 1;
+        } else {
+            alert('충분히 빠릅니다')
+        }
+    } else {
+        if (speed == 1) {
+            speed = 10;
+        } else if (speed == 10) {
+            speed = 100;
+        } else if (speed == 100) {
+            speed = 1000;
+        } else {
+            alert('충분히 느립니다')
+        }
+    }
 }
 
 function getRandomRSP() {
@@ -105,7 +144,15 @@ function setDebug(gen, score) {
     }
     var winPer = (score / gen) * 100;
     var ao100WinPer = (ao100Score / logs.length) * 100;
-    document.getElementById('debug').innerHTML = `세대: ${gen}<br>[전체] | 승점: ${score} | 승률: ${winPer.toFixed(1)}%<br>[이전100판] | 승점: ${ao100Score} | 승률: ${ao100WinPer.toFixed(1)}%`
+    document.getElementById('allGen').innerHTML = `${gen}`
+    document.getElementById('allStat').innerHTML = `${winPer.toFixed(1)}%`
+    document.getElementById('ao100Stat').innerHTML = `${ao100WinPer.toFixed(1)}%`
+    if (winPer.toFixed(1) > 0) {
+        document.getElementById('allStatBar').style.width = `${270 / 100 * winPer.toFixed(1)}px`;
+    }
+    if (ao100WinPer.toFixed(1) > 0) {
+        document.getElementById('ao100StatBar').style.width = `${270 / 100 * ao100WinPer.toFixed(1)}px`;
+    }
 }
 
 setInterval(() => {
