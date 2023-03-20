@@ -9,9 +9,20 @@
     <link rel="stylesheet" href="main.css">
 </head>
 <body>
-    기록은 최대 500판까지 기록됩니다
-    <div id="log"></div>
-    <div id="debug"></div>
+    <div class="log">
+        <div class="logName">가위바위보 기록</div>
+        <div id="logs"></div>
+    </div>
+    <div id="debug">
+        세대: 0<br>
+        [전체] | 승점: 0 | 승률: 0%<br>
+        [이전100판] | 승점: 0 | 승률: 0%
+    </div>
+    <div class="test">
+        <div class="test1"></div>
+        <div class="test2"></div>
+        <div class="test3"></div>
+    </div>
     <button onclick="reset();">초기화</button>
     <button onclick="loop = false;">정지</button>
     <button onclick="loop = true;">시작</button>

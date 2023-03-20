@@ -11,7 +11,7 @@ var speed = 100;
 var tick = 0;
 
 function reset() {
-    document.getElementById('log').innerHTML = '';
+    document.getElementById('logs').innerHTML = '';
     nowToken = [[basicToken, basicToken, basicToken], [basicToken, basicToken, basicToken], [basicToken, basicToken, basicToken]]
     logs = [];
     displayLogs = [];
@@ -92,7 +92,7 @@ function calcToken(A, B, win) {
 
 function addLog(content) {
     displayLogs.push(content);
-    document.getElementById('log').innerHTML = displayLogs.join('');
+    document.getElementById('logs').innerHTML = displayLogs.join('');
     if (displayLogs.length == 500) {
         displayLogs.shift();
     }
@@ -103,8 +103,9 @@ function setDebug(gen, score) {
         ao100Score -= logs[0];
         logs.shift();
     }
-    var winPer = Math.floor((score / gen) * 100);
-    document.getElementById('debug').innerHTML = `세대: ${gen}<br>[전체] | 승점: ${score} | 승률: ${winPer}%<br>[이전100판] | 승점: ${ao100Score} | 승률: ${ao100Score}%`
+    var winPer = (score / gen) * 100;
+    var ao100WinPer = (ao100Score / logs.length) * 100;
+    document.getElementById('debug').innerHTML = `세대: ${gen}<br>[전체] | 승점: ${score} | 승률: ${winPer.toFixed(1)}%<br>[이전100판] | 승점: ${ao100Score} | 승률: ${ao100WinPer.toFixed(1)}%`
 }
 
 setInterval(() => {
@@ -115,8 +116,8 @@ setInterval(() => {
             var nowAIRSP = getAIRSP(nowRandomRSP);
             var win = whoWin(nowRandomRSP, nowAIRSP);
             calcToken(nowRandomRSP, nowAIRSP, win);
-            addLog(`[랜덤: ${rsp[nowRandomRSP]}] VS [AI: ${rsp[nowAIRSP]}] ::: ${win}<br>`)
-            document.getElementById('log').scrollTop = document.getElementById('log').scrollHeight;
+            addLog(`<div class='win${win}'>[랜덤: ${rsp[nowRandomRSP]}] VS [AI: ${rsp[nowAIRSP]}]</div>`)
+            document.getElementById('logs').scrollTop = document.getElementById('logs').scrollHeight;
             globalGen++;
             setDebug(globalGen, globalScore);
         }
