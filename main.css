@@ -181,3 +181,8 @@ html, body {
 #speedUp {
     left: calc(50% + 40px);
 }
+
+button {
+    -webkit-appearance: none;
+    -webkit-text-size-adjust: unset;
+}

@@ -149,9 +149,13 @@ function setDebug(gen, score) {
     document.getElementById('ao100Stat').innerHTML = `${ao100WinPer.toFixed(1)}%`
     if (winPer.toFixed(1) > 0) {
         document.getElementById('allStatBar').style.width = `${270 / 100 * winPer.toFixed(1)}px`;
+    } else {
+        document.getElementById('allStatBar').style.width = `0`;
     }
     if (ao100WinPer.toFixed(1) > 0) {
         document.getElementById('ao100StatBar').style.width = `${270 / 100 * ao100WinPer.toFixed(1)}px`;
+    } else {
+        document.getElementById('ao100StatBar').style.width = `0`;
     }
 }
 
